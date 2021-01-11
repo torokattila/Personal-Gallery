@@ -1,0 +1,280 @@
+body {
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(255, 246, 236, 1) 39.5%,
+    rgba(100, 46, 122, 0.23) 100.2%
+  );
+}
+
+#login-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#login-title-div {
+  text-align: left;
+  margin-left: 30px;
+  margin-top: 15%;
+}
+
+#login-title {
+  font-family: "Fredoka One", cursive;
+  font-size: 60px;
+  color: #29b6f6;
+}
+
+#login-container-div {
+  background-color: #fff;
+  position: relative;
+  float: right;
+  margin-right: 130px;
+  margin-top: 40px;
+  width: 500px;
+  height: 520px;
+  box-shadow: 0px 5px 13px -4px rgba(0, 0, 0, 0.59);
+  border-radius: 5px;
+}
+
+#login-header-div {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 100%;
+  height: 90px;
+  background-image: radial-gradient(
+    circle 638px at 64.2% 57.7%,
+    rgba(17, 187, 244, 1) 62.6%,
+    rgba(248, 66, 239, 1) 90%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#login-header-title {
+  font-family: "Jua", sans-serif;
+  color: #fff;
+  font-size: 40px;
+  margin: 0;
+  position: relative;
+}
+
+#credentials-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15%;
+}
+
+.form-input {
+  font-family: "Baloo Tammudu 2", cursive;
+  font-weight: bold;
+  border: none;
+  border-bottom: 2px solid silver;
+  padding: 10px;
+  box-shadow: 0 0 0 30px white inset !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  outline: none;
+  width: 100%;
+  font-size: 18px;
+  color: #0091ea;
+  transition: 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.form-input:-webkit-autofill {
+  font-family: "Baloo Tammudu 2", cursive;
+  font-weight: bold;
+  border: none;
+  border-bottom: 2px solid silver;
+  padding: 10px;
+  box-shadow: 0 0 0 30px white inset !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  outline: none;
+  width: 100%;
+  font-size: 18px;
+  color: #0091ea !important;
+}
+
+.form-input:focus {
+  font-family: "Baloo Tammudu 2", cursive;
+  font-weight: bold;
+  border-bottom: 3px solid #03a9f4;
+  transition: 0.2s ease;
+}
+
+#login-button-div {
+  margin-top: 70px;
+}
+
+.login-button {
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  font-weight: bold;
+  width: 120px;
+  font-size: 20px;
+  background-image: radial-gradient(
+    circle 987px at 99% 2%,
+    rgba(22, 183, 229, 1) 0%,
+    rgba(9, 54, 103, 1) 90%
+  );
+  font-family: "Jua", sans-serif;
+  text-transform: uppercase;
+  box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
+  border-radius: 2px;
+  outline: none;
+  transition: 0.1s ease;
+}
+
+.login-button:hover {
+  transition: 0.1s ease;
+  box-shadow: 0px 5px 12px -3px rgba(0, 0, 0, 0.59);
+  background-image: radial-gradient(
+    circle 994px at 0.2% 51.2%,
+    rgba(61, 138, 255, 1) 0%,
+    rgba(0, 255, 39, 1) 100.2%
+  );
+}
+
+#register-question {
+  font-family: "Jua", sans-serif;
+  color: #0277bd;
+  text-align: center;
+  position: absolute;
+  right: 18%;
+  bottom: 17%;
+  font-size: 14px;
+}
+
+#register-question a {
+  text-decoration: none;
+  color: #0277bd;
+  font-size: 18px;
+}
+
+#register-question a:hover {
+  color: #01579b;
+}
+
+@media only screen and (max-width: 760px) {
+  body {
+    background-image: radial-gradient(
+      circle farthest-corner at 10% 20%,
+      rgba(234, 249, 249, 0.67) 0.1%,
+      rgba(239, 249, 251, 0.63) 90.1%
+    );
+  }
+
+  #login-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #login-title {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  #login-title-div {
+    margin-left: 0;
+  }
+
+  #login-container-div {
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+  }
+
+  .form-input {
+    font-family: "Baloo Tammudu 2", cursive;
+    font-weight: bold;
+    border: none;
+    border-bottom: 2px solid silver;
+    padding: 4px;
+    box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    outline: none;
+    width: 100%;
+    font-size: 12px;
+    color: #0091ea;
+    transition: 0.2s ease;
+    margin-bottom: 10px;
+  }
+
+  .form-input:-webkit-autofill {
+    font-family: "Baloo Tammudu 2", cursive;
+    font-weight: bold;
+    border: none;
+    border-bottom: 2px solid silver;
+    padding: 4px;
+    box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    outline: none;
+    width: 100%;
+    font-size: 12px;
+    color: #0091ea !important;
+  }
+
+  .form-input:focus {
+    font-family: "Baloo Tammudu 2", cursive;
+    font-weight: bold;
+    border-bottom: 3px solid #03a9f4;
+    transition: 0.2s ease;
+  }
+
+  #login-button-div {
+    margin-top: 90px;
+  }
+
+  .login-button {
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    font-weight: bold;
+    width: 100px;
+    font-size: 15px;
+    background-image: radial-gradient(
+      circle 987px at 99% 2%,
+      rgba(22, 183, 229, 1) 0%,
+      rgba(9, 54, 103, 1) 90%
+    );
+    font-family: "Jua", sans-serif;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
+    border-radius: 2px;
+    outline: none;
+    transition: 0.1s ease;
+  }
+
+  .login-button:hover {
+    transition: 0.1s ease;
+    box-shadow: 0px 5px 12px -3px rgba(0, 0, 0, 0.59);
+    background-image: radial-gradient(
+      circle 994px at 0.2% 51.2%,
+      rgba(61, 138, 255, 1) 0%,
+      rgba(0, 255, 39, 1) 100.2%
+    );
+  }
+
+  #register-question {
+    font-family: "Jua", sans-serif;
+    color: #0277bd;
+    text-align: center;
+    position: absolute;
+    right: 8%;
+    bottom: 17%;
+    font-size: 11px;
+  }
+
+  #register-question a {
+    text-decoration: none;
+    color: #0277bd;
+    font-size: 12px;
+  }
+}
