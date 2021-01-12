@@ -244,6 +244,38 @@ body {
   cursor: pointer;
 }
 
+#verify-container, #email-send-container {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#verify-title, #email-send-title {
+  font-family: "Jua", sans-serif;
+  font-size: 40px;
+  color: #29b6f6;
+}
+
+#verify-container a {
+  text-decoration: none;
+  font-family: "Jua", sans-serif;
+  color: #0277bd;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#verify-container a:hover {
+  color: #29b6f6;
+}
+
+#email-send-title-error {
+  font-family: "Jua", sans-serif;
+  font-size: 40px;
+  color: #f64129;
+}
+
 .slidein-from-right {
   -moz-animation: slidein-from-right2 500ms;
   -webkit-animation: slidein-from-right2 500ms;
