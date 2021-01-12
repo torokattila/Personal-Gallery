@@ -13,22 +13,26 @@
 
             <div id="credentials-div">
                 <form action="/" method="post" autocomplete="off">
-                    <div id="login-username">
-                        <input class="form-input" type="text" name="login-username" id="login-username" placeholder="Username:">
+                    <div id="login-username-div">
+                        <input class="form-input" type="text" name="login-username" id="login-username"
+                            placeholder="Username:">
                     </div>
 
-                    <div id="login-password">
-                        <input class="form-input" type="password" name="login-password" id="login-password" placeholder="Password:">
+                    <div id="login-password-div">
+                        <input class="form-input" type="password" name="login-password" id="login-password"
+                            placeholder="Password:">
+                        <img src="show-pw.png" class="show-pw-image" alt="show_password" title="Show Password">
                     </div>
 
                     <div id="register-question">
                         <p>Haven't registered yet?</p>
-                        <a href="/signup">Register</a>
+                        <a id="signup-link" href="/signup">Sign Up</a>
                     </div>
 
                     <div id="login-button-div">
                         <button class="login-button" type="submit">Login</button>
                     </div>
+
                 </form>
             </div>
         </div>

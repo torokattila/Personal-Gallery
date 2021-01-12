@@ -1,0 +1,46 @@
+<%- include('header.ejs'); %>
+
+<body>
+    <div id="signup-container">
+        <div id="login-title-div">
+            <h1 id="login-title">Personal Gallery</h1>
+        </div>
+
+        <div id="signup-container-div">
+            <div id="login-header-div">
+                <h1 id="login-header-title">Sign Up</h1>
+            </div>
+
+            <div id="credentials-div-signup">
+                <form action="/" method="post" autocomplete="off">
+
+                    <div id="signup-email-div">
+                        <input class="form-input" type="email" name="signup-email" id="signup-email" placeholder="Email Address:">
+                    </div>
+
+                    <div id="signup-username-div">
+                        <input class="form-input" type="text" name="signup-username" id="signup-username"
+                            placeholder="Username:">
+                    </div>
+
+                    <div id="signup-password-div">
+                        <input class="form-input" type="password" name="signup-password" id="signup-password"
+                            placeholder="Password:">
+                        <img src="show-pw.png" class="show-pw-image-signup" alt="show_password" title="Show Password">
+                    </div>
+
+                    <div id="back-to-login-button">
+                        <a id="back-to-login" href="/">Back to Login</a>
+                    </div>
+
+                    <div id="signup-button-div">
+                        <button class="signup-button" type="submit">Create Account</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

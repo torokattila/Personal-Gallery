@@ -6,7 +6,8 @@ body {
   );
 }
 
-#login-container {
+#login-container,
+#signup-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -24,7 +25,8 @@ body {
   color: #29b6f6;
 }
 
-#login-container-div {
+#login-container-div,
+#signup-container-div {
   background-color: #fff;
   position: relative;
   float: right;
@@ -65,6 +67,14 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 15%;
+}
+
+#credentials-div-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
 }
 
 .form-input {
@@ -140,6 +150,62 @@ body {
   );
 }
 
+#signup-button-div {
+  margin-top: 40px;
+}
+
+.signup-button {
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  font-weight: bold;
+  width: 200px;
+  font-size: 20px;
+  background-image: radial-gradient(
+    circle 987px at 99% 2%,
+    rgba(22, 183, 229, 1) 0%,
+    rgba(9, 54, 103, 1) 90%
+  );
+  font-family: "Jua", sans-serif;
+  text-transform: uppercase;
+  box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
+  border-radius: 2px;
+  outline: none;
+  transition: 0.1s ease;
+}
+
+.signup-button:hover {
+  transition: 0.1s ease;
+  box-shadow: 0px 5px 12px -3px rgba(0, 0, 0, 0.59);
+  background-image: radial-gradient(
+    circle 994px at 0.2% 51.2%,
+    rgba(61, 138, 255, 1) 0%,
+    rgba(0, 255, 39, 1) 100.2%
+  );
+}
+
+#back-to-login-button {
+  font-family: "Jua", sans-serif;
+  color: #0277bd;
+  text-align: center;
+  position: absolute;
+  right: 12%;
+  bottom: 7%;
+  font-size: 14px;
+}
+
+#back-to-login-button a {
+  text-decoration: none;
+  color: #0277bd;
+  font-size: 18px;
+}
+
+#back-to-login-button a:hover {
+  color: #01579b;
+}
+
 #register-question {
   font-family: "Jua", sans-serif;
   color: #0277bd;
@@ -160,6 +226,102 @@ body {
   color: #01579b;
 }
 
+.show-pw-image {
+  width: 40px;
+  height: 30px;
+  position: absolute;
+  right: 18%;
+  bottom: 46%;
+  cursor: pointer;
+}
+
+.show-pw-image-signup {
+  width: 40px;
+  height: 30px;
+  position: absolute;
+  right: 18%;
+  bottom: 37%;
+  cursor: pointer;
+}
+
+.slidein-from-right {
+  -moz-animation: slidein-from-right2 500ms;
+  -webkit-animation: slidein-from-right2 500ms;
+  -o-animation: slidein-from-right2 500ms;
+  animation: slidein-from-right2 500ms;
+}
+@-webkit-keyframes slidein-from-right2 {
+  from {
+    -webkit-transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(0%);
+  }
+}
+@-moz-keyframes slidein-from-right2 {
+  from {
+    -moz-transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(0%);
+  }
+}
+@-o-keyframes slidein-from-right2 {
+  from {
+    -o-transform: translateX(100%);
+  }
+  to {
+    -o-transform: translateX(0%);
+  }
+}
+@keyframes slidein-from-right2 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.slidein-from-left {
+  -webkit-animation: slidein-from-left2 500ms;
+  -moz-animation: slidein-from-left2 500ms;
+  -o-animation: slidein-from-left2 500ms;
+  animation: slidein-from-left2 500ms;
+}
+@-webkit-keyframes slidein-from-left2 {
+  from {
+    -webkit-transform: translateX(-100%);
+  }
+  to {
+    -webkit-transform: translateX(0%);
+  }
+}
+@-moz-keyframes slidein-from-left2 {
+  from {
+    -moz-transform: translateX(-100%);
+  }
+  to {
+    -moz-transform: translateX(0%);
+  }
+}
+@-o-keyframes slidein-from-left2 {
+  from {
+    -o-transform: translateX(-100%);
+  }
+  to {
+    -o-transform: translateX(0%);
+  }
+}
+@keyframes slidein-from-left2 {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
 @media only screen and (max-width: 760px) {
   body {
     background-image: radial-gradient(
@@ -169,7 +331,8 @@ body {
     );
   }
 
-  #login-container {
+  #login-container,
+  #signup-container {
     display: flex;
     flex-direction: column;
   }
@@ -183,7 +346,8 @@ body {
     margin-left: 0;
   }
 
-  #login-container-div {
+  #login-container-div,
+  #signup-container-div {
     width: 300px;
     height: 400px;
     margin: 0 auto;
@@ -275,6 +439,52 @@ body {
   #register-question a {
     text-decoration: none;
     color: #0277bd;
+    font-size: 15px;
+  }
+
+  .show-pw-image {
+    width: 30px;
+    height: 25px;
+    position: absolute;
+    right: 16%;
+    bottom: 49%;
+    cursor: pointer;
+  }
+
+  .show-pw-image-signup {
+    width: 30px;
+    height: 25px;
+    position: absolute;
+    right: 18%;
+    bottom: 40%;
+    cursor: pointer;
+  }
+
+  #signup-button-div {
+    margin-top: 30px;
+  }
+
+  .signup-button {
+    padding: 10px;
+    font-weight: bold;
+    width: 130px;
     font-size: 12px;
+    background-image: radial-gradient(
+      circle 987px at 99% 2%,
+      rgba(22, 183, 229, 1) 0%,
+      rgba(9, 54, 103, 1) 90%
+    );
+    font-family: "Jua", sans-serif;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
+    border-radius: 2px;
+    outline: none;
+    transition: 0.1s ease;
+  }
+
+  #back-to-login-button a {
+    text-decoration: none;
+    color: #0277bd;
+    font-size: 16px;
   }
 }
