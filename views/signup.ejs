@@ -12,20 +12,21 @@
             </div>
 
             <div id="credentials-div-signup">
-                <form action="/send" method="post" autocomplete="off">
+                <form action="/send" method="POST" autocomplete="off">
 
                     <div id="signup-email-div">
-                        <input class="form-input" type="email" name="signup_email" id="signup_email" placeholder="Email Address:">
+                        <input class="form-input" type="email" name="signup_email" id="signup_email"
+                            placeholder="Email Address:" required>
                     </div>
 
                     <div id="signup-username-div">
                         <input class="form-input" type="text" name="signup_username" id="signup_username"
-                            placeholder="Username:">
+                            placeholder="Username:" required>
                     </div>
 
                     <div id="signup-password-div">
                         <input class="form-input" type="password" name="signup_password" id="signup_password"
-                            placeholder="Password:">
+                            placeholder="Password:" required>
                         <img src="show-pw.png" class="show-pw-image-signup" alt="show_password" title="Show Password">
                     </div>
 

@@ -1,16 +1,12 @@
-const nodemailer = require('nodemailer');
+const dbConfig = require('./database');
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
 
-var smtpTransport = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: 'personalgallery12@gmail.com',
-        pass: 'mypersonalgallery1'
-    }
-});
+const conn = mysql.createConnection(dbConfig.connection);
+conn.query('USE ' + dbConfig.database);
 
-var randomNumber, mailOptions, host, link;
+module.exports = (app, passport) => {
 
-module.exports = (app) => {
     app.get('/', (req, res) => {
         res.render('login.ejs');
     });
@@ -19,32 +15,29 @@ module.exports = (app) => {
         res.render('signup.ejs');
     });
 
-    app.post('/send', (req, res) => {
-        randomNumber = Math.floor((Math.random() * 1000000000) + 54);
-        host = req.get('host');
-        link = 'http://' + req.get('host') + '/verify?id=' + randomNumber;
+    app.post('/send', passport.authenticate('local-signup', {
+        successRedirect: '/send',
+        failureRedirect: '/emailsenderror',
+        failureFlash: true
+    }));
 
-        mailOptions = {
-            to: req.body.signup_email,
-            subject: 'Confirm your Email address',
-            html: '<h3>Click the link down below to confirm your email address!</h3><br><a href="' + link + '">' + link + '</a>'
-        }
-
-        smtpTransport.sendMail(mailOptions, (error, response) => {
-            if (error) {
-                res.render('emailsenderror.ejs');
-            } else {
-                res.render('emailsend.ejs');
-            }
-        })
+    app.get('/send', (req, res) => {
+        res.render('emailsend.ejs');
     });
 
     app.get('/verify', (req, res) => {
-        // console.log(req.protocol + ':/' + req.get('host'));
+        host = req.get('host');
 
         if ((req.protocol + '://' + req.get('host')) == ('http://' + host)) {
 
-            if (req.query.id == randomNumber) {
+            if (req.query.id == req.user.verify_id) {
+                let verifyQuery = "UPDATE users SET is_verified = 'yes' WHERE verification_id = ? ";
+                
+                conn.query(verifyQuery, [req.user.verify_id], (err, rows) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
 
                 res.render('verifypage.ejs');
             } else {
