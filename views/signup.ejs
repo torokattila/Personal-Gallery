@@ -12,7 +12,7 @@
             </div>
 
             <div id="credentials-div-signup">
-                <form action="/send" method="POST" autocomplete="off">
+                <form action="/send" method="POST" autocomplete="off" id="signup-form">
 
                     <div id="signup-email-div">
                         <input class="form-input" type="email" name="signup_email" id="signup_email"
@@ -28,6 +28,12 @@
                         <input class="form-input" type="password" name="signup_password" id="signup_password"
                             placeholder="Password:" required>
                         <img src="show-pw.png" class="show-pw-image-signup" alt="show_password" title="Show Password">
+                    </div>
+
+                    <div class="error-div">
+                        <% if (message.length > 0) { %>
+                            <span class="error-message"><%= message %></span>
+                        <% } %>
                     </div>
 
                     <div id="back-to-login-button">

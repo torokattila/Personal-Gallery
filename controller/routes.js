@@ -8,16 +8,31 @@ conn.query('USE ' + dbConfig.database);
 module.exports = (app, passport) => {
 
     app.get('/', (req, res) => {
-        res.render('login.ejs');
+        res.render('login.ejs', { message: req.flash('loginMessage') });
     });
 
+    app.post('/', passport.authenticate('local-login', {
+        successRedirect: '/main',
+        failureRedirect: '/',
+        failureFlash: true
+    }),
+        (req, res) => {
+            if (req.body.remember) {
+                req.session.cookie.maxAge = 1000 * 60 * 3;
+            } else {
+                req.session.cookie.expires = false;
+            }
+
+            res.redirect('/main');
+        });
+
     app.get('/signup', (req, res) => {
-        res.render('signup.ejs');
+        res.render('signup.ejs', { message: req.flash('signupMessage') });
     });
 
     app.post('/send', passport.authenticate('local-signup', {
         successRedirect: '/send',
-        failureRedirect: '/emailsenderror',
+        failureRedirect: '/signup',
         failureFlash: true
     }));
 
@@ -32,7 +47,7 @@ module.exports = (app, passport) => {
 
             if (req.query.id == req.user.verify_id) {
                 let verifyQuery = "UPDATE users SET is_verified = 'yes' WHERE verification_id = ? ";
-                
+
                 conn.query(verifyQuery, [req.user.verify_id], (err, rows) => {
                     if (err) {
                         console.log(err);
@@ -41,10 +56,18 @@ module.exports = (app, passport) => {
 
                 res.render('verifypage.ejs');
             } else {
-                res.end("<h1>Bad Request</h1>");
+                res.render('badrequest.ejs');
             }
         } else {
-            res.end("<h1>Request is from unknown source!</h1>");
+            res.render('unkonwnsource.ejs');
         }
+    });
+
+    app.get('/emailsenderror', (req, res) => {
+        res.render('emailsenderror.ejs');
+    })
+
+    app.get('/main', (req, res) => {
+        res.render('main.ejs');
     });
 }

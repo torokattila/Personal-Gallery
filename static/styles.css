@@ -244,7 +244,8 @@ body {
   cursor: pointer;
 }
 
-#verify-container, #email-send-container {
+#verify-container,
+#email-send-container {
   margin-top: 10%;
   display: flex;
   flex-direction: column;
@@ -252,7 +253,8 @@ body {
   justify-content: center;
 }
 
-#verify-title, #email-send-title {
+#verify-title,
+#email-send-title {
   font-family: "Jua", sans-serif;
   font-size: 40px;
   color: #29b6f6;
@@ -353,6 +355,28 @@ body {
   to {
     transform: translateX(0%);
   }
+}
+
+.swal2-html-container,
+.swal2-title,
+.swal2-confirm,
+.swal2-cancel {
+  font-family: "Jua", sans-serif;
+}
+
+.swal2-title {
+  color: #12bbf4 !important;
+}
+
+.error-div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: red;
+  font-size: 18px;
+  font-family: "Jua", sans-serif;
 }
 
 @media only screen and (max-width: 760px) {
@@ -519,5 +543,13 @@ body {
     text-decoration: none;
     color: #0277bd;
     font-size: 16px;
+  }
+
+  .error-div {
+    margin-top: 5px;
+  }
+  .error-message {
+    color: red;
+    font-size: 12px;
   }
 }

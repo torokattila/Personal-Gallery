@@ -12,7 +12,7 @@
             </div>
 
             <div id="credentials-div">
-                <form action="/" method="post" autocomplete="off">
+                <form action="/" method="post" autocomplete="off" id="login-form">
                     <div id="login-username-div">
                         <input class="form-input" type="text" name="login-username" id="login-username"
                             placeholder="Username:">
@@ -22,6 +22,12 @@
                         <input class="form-input" type="password" name="login-password" id="login-password"
                             placeholder="Password:">
                         <img src="show-pw.png" class="show-pw-image" alt="show_password" title="Show Password">
+                    </div>
+
+                    <div class="error-div">
+                        <% if (message.length > 0) { %>
+                        <span class="error-message"><%= message %></span>
+                        <% } %>
                     </div>
 
                     <div id="register-question">

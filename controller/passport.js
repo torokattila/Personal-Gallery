@@ -119,5 +119,35 @@ module.exports = (passport, randomNumber) => {
                 })
             }
         )
-    )
+    );
+
+    passport.use(
+        'local-login',
+        new LocalStrategy({
+            usernameField: 'login-username',
+            passwordField: 'login-password',
+            passReqToCallback: true
+        },
+            function (req, username, password, done) {
+
+                conn.query("SELECT * FROM users WHERE username = ?", [username], (err, rows) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    if (!rows.length) {
+                        return done(null, false, req.flash('loginMessage', 'There is no user with this username!'));
+                    } else if (rows[0].is_verified == 'no') {
+                        return done(null, false, req.flash('loginMessage', 'You have to verify your email address!'));
+                    }
+
+                    if (!bcrypt.compareSync(password, rows[0].password)) {
+                        return done(null, false, req.flash('loginMessage', 'Wrong Password!'));
+                    }
+
+                    return done(null, rows[0]);
+                });
+            }
+        )
+    );
 }
