@@ -4,6 +4,19 @@ body {
     rgba(255, 246, 236, 1) 39.5%,
     rgba(100, 46, 122, 0.23) 100.2%
   );
+  background-size: cover;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 #login-container,
@@ -89,7 +102,7 @@ body {
   width: 100%;
   font-size: 18px;
   color: #0091ea;
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
   margin-bottom: 10px;
 }
 
@@ -111,7 +124,7 @@ body {
   font-family: "Baloo Tammudu 2", cursive;
   font-weight: bold;
   border-bottom: 3px solid #03a9f4;
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 #login-button-div {
@@ -137,11 +150,11 @@ body {
   box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
   border-radius: 2px;
   outline: none;
-  transition: 0.1s ease;
+  transition: all 0.1s ease;
 }
 
 .login-button:hover {
-  transition: 0.1s ease;
+  transition: all 0.1s ease;
   box-shadow: 0px 5px 12px -3px rgba(0, 0, 0, 0.59);
   background-image: radial-gradient(
     circle 994px at 0.2% 51.2%,
@@ -173,11 +186,11 @@ body {
   box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
   border-radius: 2px;
   outline: none;
-  transition: 0.1s ease;
+  transition: all 0.1s ease;
 }
 
 .signup-button:hover {
-  transition: 0.1s ease;
+  transition: all 0.1s ease;
   box-shadow: 0px 5px 12px -3px rgba(0, 0, 0, 0.59);
   background-image: radial-gradient(
     circle 994px at 0.2% 51.2%,
@@ -379,6 +392,306 @@ body {
   font-family: "Jua", sans-serif;
 }
 
+#main-page-container {
+  animation: fadein 1s;
+}
+
+#main-page-cover-div {
+  width: 100%;
+  height: 180px;
+  background-image: url("landscape.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#profile-image-div {
+  border-radius: 50%;
+  background-image: url("default-profile-picture.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 3px solid silver;
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  position: relative;
+  bottom: 60px;
+  transition: all 0.2s ease;
+  color: #fff !important;
+}
+
+#profile-image-div:hover {
+  cursor: pointer;
+  border: 3px solid grey;
+  transition: all 0.2s ease;
+  -webkit-filter: brightness(110%);
+  color: #fff !important;
+}
+
+#profile-image-div:active {
+  -webkit-filter: brightness(70%);
+}
+
+#profile-title-div {
+  margin-top: -60px;
+}
+
+#profile-title {
+  font-family: "Jua", sans-serif;
+  color: #19b1f8;
+}
+
+#profile-image-div .tooltiptext {
+  display: none;
+  width: 150px;
+  background-color: grey;
+  text-align: center;
+  border-radius: 6px;
+  padding: 15px 0;
+  position: absolute;
+  z-index: 1;
+  top: 110%;
+  left: 42%;
+  margin-left: -60px;
+}
+
+#profile-image-div .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent grey transparent;
+}
+
+#tooltip-link {
+  text-decoration: none;
+  font-family: "Jua", sans-serif;
+  color: #fff !important;
+}
+
+#tooltip-link:hover {
+  background-color: #989898;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  color: #fff !important;
+  transition: all 0.1s ease;
+}
+
+#edit-page-container {
+  width: 100%;
+  animation: fadein 1s;
+}
+
+#datas-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 500px;
+  background-color: #fff;
+  margin-top: 100px;
+  box-shadow: 0px 5px 13px -4px rgba(0, 0, 0, 0.59);
+  border-radius: 5px;
+}
+
+#edit-header-div {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 100%;
+  height: 90px;
+  background-image: radial-gradient(
+    circle 638px at 64.2% 57.7%,
+    rgba(17, 187, 244, 1) 62.6%,
+    rgba(248, 66, 239, 1) 90%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#edit-header-title {
+  font-family: "Jua", sans-serif;
+  color: #fff;
+  font-size: 40px;
+  margin: 0;
+  position: relative;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#change-picture-label {
+  margin-top: 40px;
+  width: 200px;
+  height: 17px;
+  display: block;
+  border-radius: 5px;
+  padding: 20px;
+  cursor: pointer;
+  background-image: radial-gradient(
+    circle 987px at 99% 2%,
+    rgba(22, 183, 229, 1) 0%,
+    rgba(9, 54, 103, 1) 90%
+  );
+  font-family: "Jua", sans-serif;
+  text-transform: uppercase;
+  box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
+  color: #fff;
+  transition: all 0.1 ease;
+}
+
+#change-picture-label:hover {
+  transition: all 0.1s ease;
+  box-shadow: 0px 5px 12px -3px rgba(0, 0, 0, 0.59);
+  background-image: radial-gradient(
+    circle 994px at 0.2% 51.2%,
+    rgba(61, 138, 255, 1) 0%,
+    rgba(0, 255, 39, 1) 100.2%
+  );
+}
+
+#change-picture-label:active {
+  box-shadow: 0px 5px 12px -1px rgba(0, 0, 0, 0.59);
+  background-image: radial-gradient(
+    circle 994px at 0.2% 51.2%,
+    rgb(26, 118, 255) 0%,
+    rgba(0, 255, 39, 1) 100.2%
+  );
+}
+
+#change-username-label-div {
+  font-family: "Jua", sans-serif;
+  margin-top: 30px;
+  color: grey;
+}
+
+#edit-username-input {
+  font-family: "Baloo Tammudu 2", cursive;
+  font-weight: bold;
+  border: none;
+  border-bottom: 2px solid silver;
+  padding: 6px;
+  box-shadow: 0 0 0 30px white inset !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  outline: none;
+  width: 30%;
+  font-size: 14px;
+  color: #0091ea;
+  transition: 0.2s ease;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#edit-username-input:-webkit-autofill {
+  font-family: "Baloo Tammudu 2", cursive;
+  font-weight: bold;
+  border: none;
+  border-bottom: 2px solid silver;
+  padding: 10px;
+  box-shadow: 0 0 0 30px white inset !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  outline: none;
+  width: 100%;
+  font-size: 18px;
+  color: #0091ea !important;
+}
+
+#edit-username-input:focus {
+  font-family: "Baloo Tammudu 2", cursive;
+  font-weight: bold;
+  border-bottom: 3px solid #03a9f4;
+  transition: all 0.2s ease;
+}
+
+#delete-profile-button-div {
+  margin-top: 30px;
+}
+
+#delete-profile-button {
+  padding: 14px;
+  width: 150px;
+  border: none;
+  font-family: "Jua", sans-serif;
+  text-transform: uppercase;
+  box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
+  color: #fff;
+  transition: all 0.1s ease;
+  border-radius: 5px;
+  cursor: pointer;
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(255, 7, 7, 1) 0%,
+    rgba(255, 41, 41, 1) 100.7%
+  );
+  outline: none;
+}
+
+#delete-profile-button:hover {
+  box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, 0.59);
+  transition: all 0.1s ease;
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(226, 37, 37, 1) 0%,
+    rgba(211, 49, 49, 1) 82.8%
+  );
+}
+
+#delete-profile-button:active {
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgb(204, 1, 1) 0%,
+    rgb(248, 0, 0) 100.7%
+  );
+  outline: none;
+  transition: all 0.1s ease;
+}
+
+#edit-profile-send-button-div {
+  margin-top: 50px;
+}
+
+#edit-profile-button {
+  border: none;
+  width: 160px;
+  display: block;
+  border-radius: 5px;
+  padding: 14px;
+  cursor: pointer;
+  background-image: radial-gradient(
+    circle 987px at 99% 2%,
+    rgba(22, 183, 229, 1) 0%,
+    rgba(9, 54, 103, 1) 90%
+  );
+  font-family: "Jua", sans-serif;
+  text-transform: uppercase;
+  box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
+  color: #fff;
+  transition: all 0.1 ease;
+  outline: none;
+}
+
+#edit-profile-button:hover {
+  transition: all 0.1s ease;
+  box-shadow: 0px 5px 12px -3px rgba(0, 0, 0, 0.59);
+  background-image: radial-gradient(
+    circle 994px at 0.2% 51.2%,
+    rgba(61, 138, 255, 1) 0%,
+    rgba(0, 255, 39, 1) 100.2%
+  );
+}
+
+#edit-profile-button:active {
+  box-shadow: 0px 5px 12px -1px rgba(0, 0, 0, 0.59);
+  background-image: radial-gradient(
+    circle 994px at 0.2% 51.2%,
+    rgb(20, 114, 255) 0%,
+    rgba(0, 255, 39, 1) 100.2%
+  );
+}
+
 @media only screen and (max-width: 760px) {
   body {
     background-image: radial-gradient(
@@ -422,7 +735,7 @@ body {
     width: 100%;
     font-size: 12px;
     color: #0091ea;
-    transition: 0.2s ease;
+    transition: all 0.2s ease;
     margin-bottom: 10px;
   }
 
@@ -444,7 +757,7 @@ body {
     font-family: "Baloo Tammudu 2", cursive;
     font-weight: bold;
     border-bottom: 3px solid #03a9f4;
-    transition: 0.2s ease;
+    transition: all 0.2s ease;
   }
 
   #login-button-div {
@@ -470,11 +783,11 @@ body {
     box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
     border-radius: 2px;
     outline: none;
-    transition: 0.1s ease;
+    transition: all 0.1s ease;
   }
 
   .login-button:hover {
-    transition: 0.1s ease;
+    transition: all 0.1s ease;
     box-shadow: 0px 5px 12px -3px rgba(0, 0, 0, 0.59);
     background-image: radial-gradient(
       circle 994px at 0.2% 51.2%,
@@ -536,7 +849,7 @@ body {
     box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
     border-radius: 2px;
     outline: none;
-    transition: 0.1s ease;
+    transition: all 0.1s ease;
   }
 
   #back-to-login-button a {
@@ -550,6 +863,153 @@ body {
   }
   .error-message {
     color: red;
+    font-size: 12px;
+  }
+
+  #main-page-cover-div {
+    width: 100%;
+    height: 120px;
+    background-color: red;
+  }
+
+  #profile-image-div {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    position: relative;
+    bottom: 40px;
+  }
+
+  #profile-title-div {
+    margin-top: -30px;
+  }
+
+  #profile-title {
+    font-family: "Jua", sans-serif;
+    color: #19b1f8;
+    font-size: 18px;
+  }
+
+  #profile-image-div .tooltiptext {
+    display: none;
+    width: 150px;
+    background-color: silver;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 15px 0;
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    left: 39%;
+    margin-left: -60px;
+  }
+
+  #profile-image-div .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent silver transparent;
+  }
+
+  #datas-container {
+    width: 80%;
+    height: 400px;
+    background-color: #fff;
+    margin-top: 100px;
+  }
+
+  #edit-header-div {
+    width: 100%;
+    height: 80px;
+  }
+
+  #edit-header-title {
+    font-family: "Jua", sans-serif;
+    color: #fff;
+    font-size: 30px;
+    margin: 0;
+    position: relative;
+  }
+
+  #change-picture-label {
+    margin-top: 40px;
+    width: 56%;
+    height: 15px;
+    display: block;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    background-image: radial-gradient(
+      circle 987px at 99% 2%,
+      rgba(22, 183, 229, 1) 0%,
+      rgba(9, 54, 103, 1) 90%
+    );
+    font-family: "Jua", sans-serif;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
+    color: #fff;
+    transition: all 0.1 ease;
+    font-size: 12px;
+  }
+
+  #change-username-label-div {
+    font-family: "Jua", sans-serif;
+    margin-top: 20px;
+    color: grey;
+  }
+
+  #delete-profile-button-div {
+    margin-top: 20px;
+  }
+
+  #delete-profile-button {
+    padding: 10px;
+    width: 130px;
+    border: none;
+    font-family: "Jua", sans-serif;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
+    color: #fff;
+    transition: all 0.1s ease;
+    border-radius: 5px;
+    cursor: pointer;
+    background-image: radial-gradient(
+      circle farthest-corner at 10% 20%,
+      rgba(255, 7, 7, 1) 0%,
+      rgba(255, 41, 41, 1) 100.7%
+    );
+    outline: none;
+    font-size: 12px;
+  }
+
+  #edit-profile-send-button-div {
+    margin-top: 30px;
+  }
+  
+  #edit-profile-button {
+    border: none;
+    width: 130px;
+    display: block;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    background-image: radial-gradient(
+      circle 987px at 99% 2%,
+      rgba(22, 183, 229, 1) 0%,
+      rgba(9, 54, 103, 1) 90%
+    );
+    font-family: "Jua", sans-serif;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
+    color: #fff;
+    transition: all 0.1 ease;
+    outline: none;
     font-size: 12px;
   }
 }

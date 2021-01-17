@@ -1,8 +1,20 @@
 <%- include('header.ejs'); %>
 
 <body>
-    <div id="email-send-container">
-        <h1 id="email-send-title">Main Page</h1>
+    <div id="main-page-container">
+        <div id="main-page-cover-div"></div>
+
+        <div id="profile-image-div" align="center">
+            <span class="tooltiptext"><a id="tooltip-link" href="/edit">Edit Profile</a></span>
+        </div>
+
+        <div id="profile-title-div" align="center">
+            <h1 id="profile-title">
+                <% if (user.username) { %>
+                    <%= user.username; %>
+                <% } %>
+            's Gallery</h1>
+        </div>
     </div>
 </body>
 

@@ -70,4 +70,16 @@ $(document).ready(function () {
             });
         }
     });
+
+    $('#profile-image-div').click(function () {
+        $('.tooltiptext').fadeIn();
+
+        $(document).mouseup(function (event) {
+            const container = $('.tooltiptext');
+
+            if (!container.is(event.target) && container.has(event.target).length === 0) {
+                $('.tooltiptext').fadeOut();
+            }
+        });
+    })
 });

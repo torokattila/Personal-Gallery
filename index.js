@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const fileUpload = require('express-fileupload');
 const PORT = (process.env.PORT || 3000);
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.set('view engine', 'ejs');
+app.use(fileUpload());
 app.use(session({
     secret: 'justasecret',
     resave: true,

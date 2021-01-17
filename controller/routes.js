@@ -67,7 +67,28 @@ module.exports = (app, passport) => {
         res.render('emailsenderror.ejs');
     })
 
-    app.get('/main', (req, res) => {
-        res.render('main.ejs');
+    app.get('/main', isLoggedIn, (req, res) => {
+        const user = req.user;
+
+        conn.query("SELECT * FROM users WHERE user_id = ?", [user.user_id], (err, rows) => {
+            if (err) {
+                console.log(err);
+            }
+        });
+
+        res.render('main.ejs', {
+            user: user
+        });
     });
+
+    app.get('/edit', isLoggedIn, (req, res) => {
+        res.render('edit.ejs');
+    });
+
+    function isLoggedIn(req, res, next) {
+        if (req.isAuthenticated())
+            return next();
+        
+        return res.redirect('/');
+    }
 }

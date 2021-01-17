@@ -1,0 +1,43 @@
+<%- include('header.ejs'); %>
+
+<body>
+    <div id="edit-page-container" align="center">
+
+        <div id="datas-container">
+
+            <div id="edit-header-div">
+                <h1 id="edit-header-title">Edit Profile</h1>
+            </div>
+
+            <div id="change-picture-div">
+                <label id="change-picture-label">
+                    <input type="file" name="change_picture" id="change-picture-button" />
+                    Change Profile Picture
+                </label>
+            </div>
+
+            <div id="change-username-label-div">
+                <label for="edit-username-input">Change username:</label>
+            </div>
+            <div id="edit-username-input-div">
+                <input type="text" name="edit_username_input" id="edit-username-input">
+            </div>
+
+            <div id="delete-profile-button-div">
+                <form action="/delete" method="post">
+                    <button id="delete-profile-button" type="button">Delete profile</button>
+                </form>
+            </div>
+
+            <div id="edit-profile-send-button-div">
+                <form action="/edit_confirm" method="post">
+                    <button id="edit-profile-button" type="button">Edit Profile</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
