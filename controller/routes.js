@@ -85,6 +85,11 @@ module.exports = (app, passport) => {
         res.render('edit.ejs');
     });
 
+    app.get('/logout', (req, res) => {
+        req.logout();
+        res.redirect('/');
+    });
+
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())
             return next();

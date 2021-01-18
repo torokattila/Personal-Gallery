@@ -81,5 +81,23 @@ $(document).ready(function () {
                 $('.tooltiptext').fadeOut();
             }
         });
+    });
+
+    $('#logout-form').on('submit', function (event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you want to log out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#12BBF4',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            cancelButtonColor: '#ff0707'
+        }).then((result) => {
+            if (result.value) {
+                $(this).unbind('submit').submit();
+            }
+        });
     })
 });
