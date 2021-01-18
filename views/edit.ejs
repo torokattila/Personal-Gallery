@@ -20,14 +20,17 @@
                 <label for="edit-username-input">Change username:</label>
             </div>
             <div id="edit-username-input-div">
-                <input type="text" name="edit_username_input" id="edit-username-input">
+                <% if (user.username) { %>
+                <input type="text" name="edit_username_input" id="edit-username-input" value="<%= user.username %>">
+                <% } %>
             </div>
 
-            <div id="delete-profile-button-div">
-                <form action="/delete" method="post">
-                    <button id="delete-profile-button" type="button">Delete profile</button>
-                </form>
-            </div>
+            <form action="/deleteAccount" method="post" id="delete-account-form">
+                <div id="delete-profile-button-div">
+                    <button id="delete-profile-button" type="submit">Delete profile</button>
+                </div>
+            </form>
+
 
             <div id="edit-profile-send-button-div">
                 <form action="/edit_confirm" method="post">

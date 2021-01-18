@@ -82,8 +82,34 @@ module.exports = (app, passport) => {
     });
 
     app.get('/edit', isLoggedIn, (req, res) => {
-        res.render('edit.ejs');
+        const user = req.user;
+        const userId = user.user_id;
+
+        conn.query("SELECT * FROM users WHERE user_id = ?", [userId], (err, rows) => {
+            if (err) {
+                console.log(err);
+            }
+        });
+
+        res.render('edit.ejs', {
+            user: user
+        });
     });
+
+    app.post('/deleteAccount', (req, res) => {
+        const user = req.user;
+
+        req.logout();
+        res.redirect('/');
+
+        conn.query("DELETE FROM users WHERE user_id = ?", [user.user_id], (err, rows) => {
+            if (err) {
+                console.log(err);
+            } else {
+                return rows;
+            }
+        });
+    })
 
     app.get('/logout', (req, res) => {
         req.logout();

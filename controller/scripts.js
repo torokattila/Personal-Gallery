@@ -99,5 +99,23 @@ $(document).ready(function () {
                 $(this).unbind('submit').submit();
             }
         });
-    })
+    }); 
+
+    $('#delete-account-form').on('submit', function (event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you want to delete your account?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#12BBF4',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            cancelButtonColor: '#ff0707'
+        }).then((result) => {
+            if (result.value) {
+                $(this).unbind('submit').submit();
+            }
+        });
+    });
 });
