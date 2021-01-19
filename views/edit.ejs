@@ -21,7 +21,12 @@
             </div>
             <div id="edit-username-input-div">
                 <% if (user.username) { %>
-                <input type="text" name="edit_username_input" id="edit-username-input" value="<%= user.username %>">
+                    <form action="/edit/:userId" method="post" id="edit-username-form">
+                        <input type="text" name="edit_username_input" id="edit-username-input" value="<%= user.username %>">
+                        <div id="edit-profile-send-button-div">
+                            <button id="edit-profile-button" type="submit">Edit Profile</button>
+                        </div>
+                    </form>
                 <% } %>
             </div>
 
@@ -32,11 +37,7 @@
             </form>
 
 
-            <div id="edit-profile-send-button-div">
-                <form action="/edit_confirm" method="post">
-                    <button id="edit-profile-button" type="button">Edit Profile</button>
-                </form>
-            </div>
+            
 
             <form action="/main" method="get">
                 <div id="back-to-main-page-button-div">

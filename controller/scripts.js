@@ -118,4 +118,18 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#edit-username-form').on('submit', function (event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Profile edited!',
+            icon: 'success',
+            confirmButtonColor: '#12BBF4',
+            confirmButtonText: 'OK',
+        }).then((result) => {
+            if (result.value) {
+                $(this).unbind('submit').submit();
+            }
+        });
+    });
 });

@@ -96,6 +96,30 @@ module.exports = (app, passport) => {
         });
     });
 
+    app.post('/edit/:userId', (req, res) => {
+        const user = req.user;
+        const userId = req.user.user_id;
+        const modifiedUsername = req.body.edit_username_input;
+
+        conn.query("SELECT * FROM users WHERE user_id = ?", [userId], (err, rows) => {
+            if (err) {
+                console.log(err);
+            }
+
+            conn.query("UPDATE users SET username = ? WHERE user_id = ?", [modifiedUsername, userId], (err, rows) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    return rows;
+                }
+            })
+        });
+
+        user.username = modifiedUsername;
+
+        res.redirect('/main');
+    });
+
     app.post('/deleteAccount', (req, res) => {
         const user = req.user;
 
@@ -119,7 +143,7 @@ module.exports = (app, passport) => {
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())
             return next();
-        
+
         return res.redirect('/');
     }
 }
