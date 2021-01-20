@@ -402,9 +402,6 @@ body {
 
 #profile-image-div {
   border-radius: 50%;
-  background-image: url("default-profile-picture.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
   border: 3px solid silver;
   background-size: cover;
   width: 200px;
@@ -414,6 +411,12 @@ body {
   bottom: 60px;
   transition: all 0.2s ease;
   color: #fff !important;
+}
+
+#profile-image-div img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
 }
 
 #profile-image-div:hover {
@@ -937,6 +940,12 @@ input[type="file"] {
     margin: auto;
     position: relative;
     bottom: 40px;
+  }
+
+  #profile-image-div img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
   }
 
   #profile-title-div {

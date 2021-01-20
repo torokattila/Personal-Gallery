@@ -1,6 +1,9 @@
 const dbConfig = require('./database');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
+const upload = require('express-fileupload');
+const fs = require('fs');
+const path = require('path');
 
 const conn = mysql.createConnection(dbConfig.connection);
 conn.query('USE ' + dbConfig.database);
@@ -100,6 +103,41 @@ module.exports = (app, passport) => {
         const user = req.user;
         const userId = req.user.user_id;
         const modifiedUsername = req.body.edit_username_input;
+        
+        if (req.files) {
+            let file = req.files.change_picture;
+            let filename = file.name;
+            
+            file.mv('static/profile_images/' + filename, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+
+            conn.query("UPDATE users SET profile_picture = ? WHERE user_id = ?", [filename, userId], (err, rows) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    return rows;
+                }
+            });
+
+            user.profile_picture = filename;
+
+            fs.readdir('static/profile_images', (err, files) => {
+                if (err) {
+                    console.log(err);
+                }
+
+                files.forEach(file => {
+                    const fileDirectory = path.join('./static/profile_images/', file);
+
+                    if (file !== filename) {
+                        fs.unlinkSync(fileDirectory);
+                    }
+                });
+            })
+        }
 
         conn.query("SELECT * FROM users WHERE user_id = ?", [userId], (err, rows) => {
             if (err) {

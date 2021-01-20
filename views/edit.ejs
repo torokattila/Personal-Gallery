@@ -9,26 +9,27 @@
                 <h1 id="edit-header-title">Edit Profile</h1>
             </div>
 
-            <div id="change-picture-div">
-                <label id="change-picture-label">
-                    <input type="file" name="change_picture" id="change-picture-button" />
-                    Change Profile Picture
-                </label>
-            </div>
+            <form action="/edit/:userId" method="post" enctype="multipart/form-data" id="edit-username-form">
+                <div id="change-picture-div">
+                    <label id="change-picture-label">
+                        <input type="file" name="change_picture" id="change-picture-button" />
+                        Change Profile Picture
+                    </label>
+                </div>
 
-            <div id="change-username-label-div">
-                <label for="edit-username-input">Change username:</label>
-            </div>
-            <div id="edit-username-input-div">
-                <% if (user.username) { %>
-                    <form action="/edit/:userId" method="post" id="edit-username-form">
-                        <input type="text" name="edit_username_input" id="edit-username-input" value="<%= user.username %>">
-                        <div id="edit-profile-send-button-div">
-                            <button id="edit-profile-button" type="submit">Edit Profile</button>
-                        </div>
-                    </form>
-                <% } %>
-            </div>
+                <div id="change-username-label-div">
+                    <label for="edit-username-input">Change username:</label>
+                </div>
+                <div id="edit-username-input-div">
+                    <% if (user.username) { %>
+                    <input type="text" name="edit_username_input" id="edit-username-input" value="<%= user.username %>">
+                    <div id="edit-profile-send-button-div">
+                        <button id="edit-profile-button" type="submit">Edit Profile</button>
+                    </div>
+
+                    <% } %>
+                </div>
+            </form>
 
             <form action="/deleteAccount" method="post" id="delete-account-form">
                 <div id="delete-profile-button-div">
@@ -37,7 +38,7 @@
             </form>
 
 
-            
+
 
             <form action="/main" method="get">
                 <div id="back-to-main-page-button-div">
