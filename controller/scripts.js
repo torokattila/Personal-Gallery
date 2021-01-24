@@ -132,4 +132,23 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('.delete-photo-form').on('submit', function (event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you want to delete this photo?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#12BBF4',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            cancelButtonColor: '#ff0707'
+        }).then((result) => {
+            if (result.value) {
+                $(this).unbind('submit').submit();
+            }
+        });
+    });
 });

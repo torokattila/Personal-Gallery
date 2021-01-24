@@ -40,13 +40,19 @@
                 <div class="no-photo-message-div">
                     <h4 class="no-photo-message">There are no photos yet.</h4>
                 </div>
-                <% } %>
+                <% } else { %>
                 <% for (let i = 0; i < photos.length; i++) { %>
-                <div class="uploaded-photo-div">
-                    <a href="#<%=photos[i].photo_id%>" data-toggle="modal" data-target="#<%photos[i].photo_id%>">
-                        <img src="./uploaded_images/<%=photos[i].name %>" alt="photo" class="uploaded-photo">
-                    </a>
-                </div>
+                <form action="/deletePhoto/:photoId" method="post" class="delete-photo-form">
+                    <div class="uploaded-photo-div">
+                        <input type="hidden" name="photoId" value="<%=photos[i].photo_id%>">
+                        <input type="hidden" name="deleted_photo_name" value="<%=photos[i].name%>">
+                        
+                        <a href="#<%=photos[i].photo_id%>" data-toggle="modal" data-target="#<%photos[i].photo_id%>">
+                            <img src="./uploaded_images/<%=photos[i].name %>" alt="photo" class="uploaded-photo">
+                        </a>
+                        <button class="delete-photo-button" title="Delete Photo" type="submit">X</button>
+                    </div>
+                </form>
 
                 <div class="modal fade" tabindex="-1" id="<%=photos[i].photo_id%>">
                     <div class="modal-dialog modal-lg">
@@ -58,6 +64,7 @@
                         </div>
                     </div>
                 </div>
+                <% } %>
                 <% } %>
             </div>
         </div>

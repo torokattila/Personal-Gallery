@@ -74,7 +74,7 @@ module.exports = (app, passport) => {
         let photosArray = [];
         const user = req.user;
 
-        conn.query("SELECT photo_id, name FROM photos WHERE user_id = ?", [user.user_id], (err, rows) => {
+        conn.query("SELECT photo_id, name FROM photos WHERE user_id = ? ORDER BY created_at DESC", [user.user_id], (err, rows) => {
             if (err) {
                 console.log(err);
             }
@@ -143,7 +143,7 @@ module.exports = (app, passport) => {
                         fs.unlinkSync(fileDirectory);
                     }
                 });
-            })
+            });
         }
 
         conn.query("SELECT * FROM users WHERE user_id = ?", [userId], (err, rows) => {
@@ -189,6 +189,42 @@ module.exports = (app, passport) => {
 
             res.redirect('/main');
         }
+    });
+
+    app.post('/deletePhoto/:photoId', isLoggedIn, (req, res) => {
+        let user = req.user;
+        let photoId = req.body.photoId;
+        const deletePhoto = req.body.deleted_photo_name;
+
+        fs.readdir('static/uploaded_images', (err, files) => {
+            if (err) {
+                console.log(err);
+            }
+
+            files.forEach(file => {
+                const fileDirectory = path.join('./static/uploaded_images/', deletePhoto);
+
+                if (file === deletePhoto) {
+                    fs.unlinkSync(fileDirectory);
+                }
+            });
+        });
+
+        conn.query("SELECT photos.user_id, photo_id FROM photos JOIN users ON photos.user_id = users.user_id WHERE photos.user_id = ?", [user.user_id], (err, rows) => {
+            if (err) {
+                console.log(err);
+            }
+
+            conn.query("DELETE FROM photos WHERE photo_id = ?", [photoId], (err, rows) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    return rows;
+                }
+            });
+        });
+
+        res.redirect('/main');
     });
 
     app.post('/deleteAccount', (req, res) => {
