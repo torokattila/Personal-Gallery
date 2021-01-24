@@ -44,10 +44,16 @@ conn.query("CREATE TABLE IF NOT EXISTS `users` ( " +
     "`user_id` int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
     "`username` varchar(255) NOT NULL, " +
     "`password` varchar(255) NOT NULL, " +
-    "`profile_picture` text NULL, " +
-    "`picture_id` int(6) NULL, " +
+    "`profile_picture` text NULL, " + 
     "`verification_id` varchar(100) NULL, " +
     "`is_verified` varchar(10) NULL DEFAULT 'no'" +
+    ")");
+
+conn.query("CREATE TABLE IF NOT EXISTS `photos` ( " +
+    "`photo_id` int(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, " +
+    "`user_id` int(6), " +
+    "`name` TEXT, " +
+    "`created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
     ")");
 
 module.exports = (passport, randomNumber) => {

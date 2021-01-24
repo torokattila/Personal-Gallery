@@ -22,10 +22,43 @@
         </div>
 
         <div id="gallery-container" align="center">
-            <div id="add-photo-div">
-                <div>
-                    <button id="add-photo-button">Add Photo</button>
+            <form action="/uploadphoto" method="post" enctype="multipart/form-data">
+                <div id="add-photo-div">
+                    <div>
+                        <label for="add_photo" id="select-photo-button">Select Photo</label>
+                        <input type="file" name="added_photo" id="add_photo" />
+                    </div>
+
+                    <div>
+                        <button type="submit" id="add-photo-button">Add photo</button>
+                    </div>
                 </div>
+            </form>
+
+            <div id="uploaded-photos-container">
+                <% if (photos.length == 0) { %>
+                <div class="no-photo-message-div">
+                    <h4 class="no-photo-message">There are no photos yet.</h4>
+                </div>
+                <% } %>
+                <% for (let i = 0; i < photos.length; i++) { %>
+                <div class="uploaded-photo-div">
+                    <a href="#<%=photos[i].photo_id%>" data-toggle="modal" data-target="#<%photos[i].photo_id%>">
+                        <img src="./uploaded_images/<%=photos[i].name %>" alt="photo" class="uploaded-photo">
+                    </a>
+                </div>
+
+                <div class="modal fade" tabindex="-1" id="<%=photos[i].photo_id%>">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <img src="./uploaded_images/<%=photos[i].name%>" alt="photo" class="img-fluid">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
             </div>
         </div>
 

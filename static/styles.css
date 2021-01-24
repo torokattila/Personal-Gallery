@@ -570,15 +570,15 @@ input[type="file"] {
 
 #edit-username-input {
   font-family: "Baloo Tammudu 2", cursive;
-  font-weight: bold!important;
+  font-weight: bold !important;
   border: none;
   border-bottom: 2px solid silver;
-  padding: 6px!important;
+  padding: 6px !important;
   box-shadow: 0 0 0 30px white inset !important;
   -webkit-box-shadow: 0 0 0 30px white inset !important;
   outline: none;
-  width: 30%!important;
-  font-size: 14px!important;
+  width: 30% !important;
+  font-size: 14px !important;
   color: #0091ea;
   transition: 0.2s ease;
   margin-bottom: 10px;
@@ -590,12 +590,12 @@ input[type="file"] {
   font-weight: bold;
   border: none;
   border-bottom: 2px solid silver;
-  padding: 10px!important;
+  padding: 10px !important;
   box-shadow: 0 0 0 30px white inset !important;
   -webkit-box-shadow: 0 0 0 30px white inset !important;
   outline: none;
-  width: 100%!important;
-  font-size: 18px!important;
+  width: 100% !important;
+  font-size: 18px !important;
   color: #0091ea !important;
 }
 
@@ -763,38 +763,94 @@ input[type="file"] {
   margin-top: 30px;
   margin-bottom: 50px;
   box-shadow: 0px 5px 13px -4px rgba(0, 0, 0, 0.59);
+  overflow-y: auto;
 }
 
 #add-photo-div {
-  border-bottom: 1px solid #DCDCDC;
-  height: 12%;
+  border-bottom: 1px solid #dcdcdc;
+  height: 90px!important;
   display: flex;
   align-items: center;
+  flex-direction: row;
+}
+
+#select-photo-button {
+  border: none!important;
+  display: block!important;
+  text-transform: uppercase;
+  width: 200px!important;
+  margin-bottom: auto;
+  height: 42px;
+  padding: 8px!important;
+  border-radius: 5px;
+  margin-left: 30%;
+  cursor: pointer!important;
+  color: #fff;
+  background-color: #0098df;
+  transition: all 0.2s ease;
+  box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
+  outline: none !important;
+}
+
+#select-photo-button:hover {
+  background-color: #007fb9!important;
+}
+
+#select-photo-button:active {
+  background-color: #016492;
+  box-shadow: 0px 5px 12px -1px rgba(0, 0, 0, 0.59)!important;
 }
 
 #add-photo-button {
-  border: none;
+  border: none!important;
   text-transform: uppercase;
   width: 200px;
   height: 42px;
   border-radius: 5px;
-  margin-left: 30%;
+  margin-left: 50%;
   cursor: pointer;
   color: #fff;
-  background-color: #29B6F6;
+  background-color: #29b6f6!important;
   transition: all 0.2s ease;
   box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.59);
-  outline: none!important;
+  outline: none !important;
 }
 
 #add-photo-button:hover {
-  background-color: #039BE5;
-  transition: all 0.2s ease;
+  background-color: #039be5!important;
+  transition: all 0.2s ease!important;
 }
 
 #add-photo-button:active {
-  box-shadow: 0px 5px 12px -1px rgba(0, 0, 0, 0.59);
-  background-color: #0277BD;
+  box-shadow: 0px 5px 12px -1px rgba(0, 0, 0, 0.59)!important;
+  background-color: #0277bd!important;
+}
+
+.uploaded-photo {
+  width: 250px;
+  height: 250px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 5px;
+  box-shadow: 0px 5px 13px -4px rgba(0, 0, 0, 0.59);
+}
+
+.uploaded-photo:hover {
+  transition: all 0.2s ease;
+  opacity: 0.8;
+  box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, 0.59)!important;
+}
+
+#uploaded-photos-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.uploaded-photo-div {
+  margin: 40px;
 }
 
 @media only screen and (max-width: 760px) {
@@ -1154,5 +1210,21 @@ input[type="file"] {
   #logout-icon {
     width: 30px;
     height: 30px;
+  }
+
+  #add-photo-div {
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 140px!important;
+  }
+
+  #add-photo-button {
+    width: 150px;
+    margin: auto;
+  }
+
+  #select-photo-button {
+    width: 150px!important;
+    margin: auto;
   }
 }

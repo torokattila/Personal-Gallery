@@ -6,6 +6,7 @@ const user = process.env.USER;
 const password = process.env.PASSWORD;
 const database = process.env.DATABASE;
 const user_table = process.env.USER_TABLE;
+const photos_table = process.env.PHOTOS_TABLE;
 
 module.exports = {
     'connection': {
@@ -16,5 +17,6 @@ module.exports = {
     
     'database': database,
     'user_table': user_table,
+    'photos_table': photos_table,
     'port': 3000
 };

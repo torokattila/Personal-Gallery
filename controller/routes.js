@@ -71,16 +71,23 @@ module.exports = (app, passport) => {
     })
 
     app.get('/main', isLoggedIn, (req, res) => {
+        let photosArray = [];
         const user = req.user;
 
-        conn.query("SELECT * FROM users WHERE user_id = ?", [user.user_id], (err, rows) => {
+        conn.query("SELECT photo_id, name FROM photos WHERE user_id = ?", [user.user_id], (err, rows) => {
             if (err) {
                 console.log(err);
             }
-        });
 
-        res.render('main.ejs', {
-            user: user
+            let queryRows = JSON.parse(JSON.stringify(rows));
+            queryRows.forEach(row => {
+                photosArray.push(row);
+            });
+
+            res.render('main.ejs', {
+                user: user,
+                photos: photosArray
+            });
         });
     });
 
@@ -156,6 +163,32 @@ module.exports = (app, passport) => {
         user.username = modifiedUsername;
 
         res.redirect('/main');
+    });
+
+    app.post('/uploadphoto', (req, res) => {
+        const user = req.user;
+        const userId = req.user.user_id;
+
+        if (req.files) {
+            let file = req.files.added_photo;
+            let filename = file.name;
+
+            file.mv('static/uploaded_images/' + filename, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+
+            conn.query("INSERT INTO photos SET user_id = ?, name = ?", [userId, filename], (err, rows) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    return rows;
+                }
+            });
+
+            res.redirect('/main');
+        }
     });
 
     app.post('/deleteAccount', (req, res) => {
