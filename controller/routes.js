@@ -6,6 +6,12 @@ const fs = require('fs');
 const path = require('path');
 
 const conn = mysql.createConnection(dbConfig.connection);
+conn.connect();
+
+setInterval(function () {
+    conn.query('SELECT 1');
+}, 4500);
+
 conn.query('USE ' + dbConfig.database);
 
 module.exports = (app, passport) => {

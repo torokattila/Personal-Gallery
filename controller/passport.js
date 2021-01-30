@@ -15,9 +15,10 @@ var smtpTransport = nodemailer.createTransport({
 });
 
 var conn = mysql.createConnection(dbConfig.connection);
+conn.connect();
 
 setInterval(function () {
-    conn.query('SELECT 1', [], function () { })
+    conn.query('SELECT 1');
 }, 4500);
 
 // function handleDisconnect() {
