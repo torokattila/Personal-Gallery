@@ -166,7 +166,6 @@ module.exports = (app, passport) => {
     });
 
     app.post('/uploadphoto', (req, res) => {
-        const user = req.user;
         const userId = req.user.user_id;
 
         if (req.files) {
@@ -187,6 +186,8 @@ module.exports = (app, passport) => {
                 }
             });
 
+            res.redirect('/main');
+        } else {
             res.redirect('/main');
         }
     });

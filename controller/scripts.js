@@ -151,4 +151,22 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#upload-photo-form').on('submit', function (event) {
+        if ($('#add_photo').val() == '') {
+
+            Swal.fire({
+                title: 'You have to select a picture before upload!',
+                icon: 'error',
+                confirmButtonColor: '#12BBF4',
+                confirmButtonText: 'OK',
+            }).then((result) => {
+                if (result.value) {
+                    $(this).unbind('submit').submit();
+                }
+            });
+
+            event.preventDefault();
+        }
+    });
 });

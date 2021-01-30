@@ -22,7 +22,7 @@
         </div>
 
         <div id="gallery-container" align="center">
-            <form action="/uploadphoto" method="post" enctype="multipart/form-data">
+            <form action="/uploadphoto" method="post" enctype="multipart/form-data" id="upload-photo-form">
                 <div id="add-photo-div">
                     <div>
                         <label for="add_photo" id="select-photo-button">Select Photo</label>
@@ -42,28 +42,30 @@
                 </div>
                 <% } else { %>
                 <% for (let i = 0; i < photos.length; i++) { %>
-                <form action="/deletePhoto/:photoId" method="post" class="delete-photo-form">
-                    <div class="uploaded-photo-div">
-                        <input type="hidden" name="photoId" value="<%=photos[i].photo_id%>">
-                        <input type="hidden" name="deleted_photo_name" value="<%=photos[i].name%>">
-                        
-                        <a href="#<%=photos[i].photo_id%>" data-toggle="modal" data-target="#<%photos[i].photo_id%>">
-                            <img src="./uploaded_images/<%=photos[i].name %>" alt="photo" class="uploaded-photo">
-                        </a>
-                        <button class="delete-photo-button" title="Delete Photo" type="submit">X</button>
-                    </div>
-                </form>
+                    <form action="/deletePhoto/:photoId" method="post" class="delete-photo-form">
+                        <div class="uploaded-photo-div">
+                            <input type="hidden" name="photoId" value="<%=photos[i].photo_id%>">
+                            <input type="hidden" name="deleted_photo_name" value="<%=photos[i].name%>">
 
-                <div class="modal fade" tabindex="-1" id="<%=photos[i].photo_id%>">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="./uploaded_images/<%=photos[i].name%>" alt="photo" class="img-fluid">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <a href="#<%=photos[i].photo_id%>" data-toggle="modal" data-target="#<%photos[i].photo_id%>" data-slide-to="<%=i%>">
+                                <img src="./uploaded_images/<%=photos[i].name%>" alt="<%=photos[i].name%>"
+                                    class="uploaded-photo">
+                            </a>
+                            <button class="delete-photo-button" title="Delete Photo" type="submit">X</button>
+                        </div>
+                    </form>
+
+                    <div class="modal fade" tabindex="-1" id="<%=photos[i].photo_id%>">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="./uploaded_images/<%=photos[i].name%>" alt="<%=photos[i].name%>"
+                                        class="img-fluid current-image">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 <% } %>
                 <% } %>
             </div>
