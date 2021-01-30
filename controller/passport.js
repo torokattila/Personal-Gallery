@@ -14,29 +14,33 @@ var smtpTransport = nodemailer.createTransport({
     }
 });
 
-var conn;
+var conn = mysql.createConnection(dbConfig.connection);
 
-function handleDisconnect() {
-    conn = mysql.createConnection(dbConfig.connection);
+setInterval(function () {
+    conn.query('SELECT 1', [], function () { })
+}, 4500);
 
-    conn.connect(function (err) {
-        if (err) {
-            console.log('error when connecting to db: ', err);
-            setTimeout(handleDisconnect, 10000);
-        }
-    });
+// function handleDisconnect() {
+//     conn = mysql.createConnection(dbConfig.connection);
 
-    conn.on('error', function (err) {
-        console.log('db error', err);
-        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            handleDisconnect();
-        } else {
-            throw err;
-        }
-    });
-}
+//     conn.connect(function (err) {
+//         if (err) {
+//             console.log('error when connecting to db: ', err);
+//             setTimeout(handleDisconnect, 10000);
+//         }
+//     });
 
-handleDisconnect();
+//     conn.on('error', function (err) {
+//         console.log('db error', err);
+//         if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+//             handleDisconnect();
+//         } else {
+//             throw err;
+//         }
+//     });
+// }
+
+// handleDisconnect();
 
 conn.query('USE ' + dbConfig.database);
 
