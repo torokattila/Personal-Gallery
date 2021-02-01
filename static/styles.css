@@ -389,6 +389,7 @@ body {
 }
 
 #main-page-container {
+  width: 100%;
   animation: fadein 1s;
 }
 
