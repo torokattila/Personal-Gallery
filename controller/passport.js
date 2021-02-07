@@ -101,7 +101,7 @@ module.exports = (passport, randomNumber) => {
                         randomNumber = Math.floor((Math.random() * 1000000000000000) + 54);
 
                         host = req.get('host');
-                        link = 'http://' + req.get('host') + '/verify?id=' + randomNumber;
+                        link = 'https://' + req.get('host') + '/verify?id=' + randomNumber;
 
                         mailOptions = {
                             to: req.body.signup_email,
